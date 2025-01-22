@@ -94,9 +94,69 @@ public class Run {
                     }
 
                 }else if(code == 1) {
+                    System.out.print("* 판매량 : ");
+                    int orderCnt = sc.nextInt();
 
+                    if(orderCnt < 0 || orderCnt > mochaStock) {
+                        System.out.println("* system: 재고 부족으로 주문이 취소되었습니다.");
+                        continue;
+                    }
+
+                    int paymentPrice = mochaPrice * orderCnt; // 결재금액
+                    mochaStock -= orderCnt; // 재고 차감
+                    mochaSalesCnt += orderCnt; // 판매량 추가
+                    balance += paymentPrice; // 잔고 반영
+                    salesPrice += paymentPrice; // 매출액 반영
+
+                    System.out.println("\n주문 : " + mochaName + "[" + orderCnt + "잔]");
+                    System.out.println("결제금액 : " + paymentPrice);
+
+                    if(mochaStock < mochaSafetyStock){
+                        int purchaseCnt = mochaSafetyStock * 2;
+                        int purchasePrice = mochaPurchasePrice * purchaseCnt;
+                        if(purchasePrice > balance){
+                            System.out.println("* system: 잔고 부족으로 매입이 취소되었습니다.");
+                            continue;
+                        }
+
+                        System.out.println("* system: " + mochaName + " [" + purchaseCnt + "잔] 매입하였습니다.");
+
+                        balance -= purchasePrice;
+                        expenses += purchasePrice;
+                        mochaStock += purchaseCnt;
+                    }
                 }else {
+                    System.out.print("* 판매량 : ");
+                    int orderCnt = sc.nextInt();
 
+                    if(orderCnt < 0 || orderCnt > latteStock) {
+                        System.out.println("* system: 재고 부족으로 주문이 취소되었습니다.");
+                        continue;
+                    }
+
+                    int paymentPrice = lattePrice * orderCnt; // 결재금액
+                    latteStock -= orderCnt; // 재고 차감
+                    latteSalesCnt += orderCnt; // 판매량 추가
+                    balance += paymentPrice; // 잔고 반영
+                    salesPrice += paymentPrice; // 매출액 반영
+
+                    System.out.println("\n주문 : " + latteName + "[" + orderCnt + "잔]");
+                    System.out.println("결제금액 : " + paymentPrice);
+
+                    if(latteStock < latteSafetyStock){
+                        int purchaseCnt = latteSafetyStock * 2;
+                        int purchasePrice = lattePurchasePrice * purchaseCnt;
+                        if(purchasePrice > balance){
+                            System.out.println("* system: 잔고 부족으로 매입이 취소되었습니다.");
+                            continue;
+                        }
+
+                        System.out.println("* system: " + latteName + " [" + purchaseCnt + "잔] 매입하였습니다.");
+
+                        balance -= purchasePrice;
+                        expenses += purchasePrice;
+                        latteStock += purchaseCnt;
+                    }
                 }
 
             }else if(menu == 2) {
