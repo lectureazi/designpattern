@@ -47,6 +47,26 @@ public class Run {
             }
 
             if(menu == 1) {
+                System.out.println("\n=========List========= ");
+                System.out.println(americanoName + "(0)");
+                System.out.println(mochaName + "(1)");
+                System.out.println(latteName + "(2)");
+
+                System.out.print("\n* 판매한 커피코드 : ");
+                int code = sc.nextInt();
+
+                if(code < 0 || code > 2) {
+                    System.out.println("정확한 상품번호를 선택해 주세요.");
+                    return;
+                }
+
+                if(code == 0) {
+
+                }else if(code == 1) {
+
+                }else {
+
+                }
 
             }else if(menu == 2) {
 
