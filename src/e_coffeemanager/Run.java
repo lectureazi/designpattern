@@ -61,6 +61,19 @@ public class Run {
                 }
 
                 if(code == 0) {
+                    System.out.print("* 판매량 : ");
+                    int orderCnt = sc.nextInt();
+
+                    if(orderCnt < 0 || orderCnt > americanoStock) {
+                        System.out.println("* system: 재고 부족으로 주문이 취소되었습니다.");
+                        continue;
+                    }
+
+                    int paymentPrice = americanoPrice * orderCnt; // 결재금액
+                    americanoStock -= orderCnt; // 재고 차감
+                    americanoSalesCnt += orderCnt; // 판매량 추가
+                    balance += paymentPrice; // 잔고 반영
+                    salesPrice += paymentPrice; // 매출액 반영
 
                 }else if(code == 1) {
 
