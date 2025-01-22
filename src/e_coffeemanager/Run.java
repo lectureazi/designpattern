@@ -75,6 +75,24 @@ public class Run {
                     balance += paymentPrice; // 잔고 반영
                     salesPrice += paymentPrice; // 매출액 반영
 
+                    if(americanoStock < americanoSafetyStock){
+                        int purchaseCnt = americanoSafetyStock * 2;
+                        int purchasePrice = americanoPurchasePrice * purchaseCnt;
+                        if(purchasePrice > balance){
+                            System.out.println("* system: 잔고 부족으로 매입이 취소되었습니다.");
+                            continue;
+                        }
+
+                        System.out.println("* system: " + americanoName + " [" + purchaseCnt + "잔] 매입하였습니다.");
+
+                        balance -= purchasePrice;
+                        expenses += purchasePrice;
+                        americanoStock += purchaseCnt;
+                    }
+
+                    System.out.println("\n주문 : " + americanoName + "[" + orderCnt + "잔]");
+                    System.out.println("결제금액 : " + paymentPrice);
+
                 }else if(code == 1) {
 
                 }else {
