@@ -50,8 +50,15 @@ public class Run {
 
             }else if(menu == 2) {
 
-            }else  {
+                System.out.println("\n=========현황========= ");
+                System.out.printf("%-10s 재고(%3d) 판매량(%3d) \n", americanoName, americanoStock, americanoSalesCnt);
+                System.out.printf("%-10s 재고(%3d) 판매량(%3d) \n", mochaName, mochaStock, mochaSalesCnt);
+                System.out.printf("%-10s 재고(%3d) 판매량(%3d) \n", latteName, latteStock, latteSalesCnt);
+                System.out.println("\n잔고(" + balance + ") 매출(" + salesPrice + ") 지출(" + expenses + ")");
 
+            }else  {
+                System.out.println("* 종료합니다.");
+                return;
             }
         }
     }
