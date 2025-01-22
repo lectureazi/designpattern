@@ -57,7 +57,7 @@ public class Run {
 
                 if(code < 0 || code > 2) {
                     System.out.println("정확한 상품번호를 선택해 주세요.");
-                    return;
+                    continue;
                 }
 
                 if(code == 0) {
@@ -75,6 +75,9 @@ public class Run {
                     balance += paymentPrice; // 잔고 반영
                     salesPrice += paymentPrice; // 매출액 반영
 
+                    System.out.println("\n주문 : " + americanoName + "[" + orderCnt + "잔]");
+                    System.out.println("결제금액 : " + paymentPrice);
+
                     if(americanoStock < americanoSafetyStock){
                         int purchaseCnt = americanoSafetyStock * 2;
                         int purchasePrice = americanoPurchasePrice * purchaseCnt;
@@ -89,9 +92,6 @@ public class Run {
                         expenses += purchasePrice;
                         americanoStock += purchaseCnt;
                     }
-
-                    System.out.println("\n주문 : " + americanoName + "[" + orderCnt + "잔]");
-                    System.out.println("결제금액 : " + paymentPrice);
 
                 }else if(code == 1) {
 
